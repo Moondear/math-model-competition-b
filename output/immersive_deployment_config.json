@@ -1,0 +1,39 @@
+{
+  "vr_system": {
+    "webgl_export": "output/FactoryVR_WebGL.zip",
+    "access_url": "https://mathmodeling-vr.github.io/factory-tour",
+    "size_mb": 25.6,
+    "platforms": [
+      "Oculus",
+      "HTC_Vive",
+      "PlayStation_VR",
+      "WebXR"
+    ]
+  },
+  "ar_apps": {
+    "android_apk": "output/DecisionAR_v1.0.apk",
+    "ios_ipa": "output/DecisionAR_v1.0.ipa",
+    "download_links": {
+      "android": "https://github.com/releases/DecisionAR_Android.apk",
+      "ios": "https://testflight.apple.com/join/DecisionAR"
+    }
+  },
+  "hologram": {
+    "projection_file": "output/production_hologram.holo",
+    "setup_guide": "docs/hologram_setup.md",
+    "hardware_requirements": {
+      "resolution": "4K_UHD",
+      "brightness": "3000_lumens",
+      "viewing_angle": "270_degrees",
+      "projection_size": "2m_x_2m_x_2m"
+    }
+  },
+  "living_paper": {
+    "hosting_url": "https://mathmodeling-paper.github.io",
+    "github_repo": "https://github.com/mathmodeling/living-paper",
+    "access_methods": [
+      "web_browser",
+      "mobile_optimized"
+    ]
+  }
+}

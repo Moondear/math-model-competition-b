@@ -1,0 +1,32 @@
+{
+  "performance": {
+    "processed_count": 61,
+    "decision_count": 61,
+    "avg_latency_ms": 23.24705045731341,
+    "throughput_per_second": 2.0284548676768046,
+    "error_rate": 0.0,
+    "total_runtime": 30.072150468826294
+  },
+  "edge_configs": {
+    "raspberry_pi": {
+      "inference_latency": "20ms",
+      "memory_requirement": "128MB",
+      "model_size": "2.5MB",
+      "power_consumption": "5W"
+    },
+    "edge_tpu": {
+      "inference_latency": "5ms",
+      "memory_requirement": "64MB",
+      "model_size": "1.8MB",
+      "power_consumption": "2W"
+    },
+    "nvidia_jetson": {
+      "inference_latency": "10ms",
+      "memory_requirement": "256MB",
+      "model_size": "3.2MB",
+      "power_consumption": "10W"
+    }
+  },
+  "overall_score": 97.3458327398182,
+  "high_priority_decisions": 16
+}

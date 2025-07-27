@@ -1,0 +1,36 @@
+{
+  "system_info": {
+    "cpu_count": 20,
+    "memory_total_gb": 31.72643280029297,
+    "python_version": "3.12.7",
+    "platform": "Windows-11-10.0.26100-SP0"
+  },
+  "test_results": {
+    "10million_variables": {
+      "total_time": 1.1064813137054443,
+      "memory_usage_mb": 3.71484375,
+      "success_count": 100,
+      "error_count": 0,
+      "avg_response_ms": 11.062867641448975,
+      "throughput": 90.37658274147857
+    },
+    "100_concurrent": {
+      "total_time": 0.09785032272338867,
+      "memory_usage_mb": 0.7734375,
+      "success_count": 100,
+      "avg_response_ms": 29.62479829788208,
+      "p95_response_ms": 49.00312423706055,
+      "p99_response_ms": 49.49105739593506,
+      "throughput": 1021.9690361439912,
+      "error_rate": 0.0
+    },
+    "raspberry_pi": {
+      "total_time": 30.024091958999634,
+      "memory_usage_mb": 0.03125,
+      "success_count": 148,
+      "avg_response_ms": 102.36002464552183,
+      "throughput": 4.92937472354222,
+      "error_rate": 0.0
+    }
+  }
+}

@@ -1,0 +1,648 @@
+{
+  "results": {
+    "training_id": "TRAINING_20250727_160016",
+    "rounds": 10,
+    "sessions": [
+      {
+        "round": 1,
+        "score": 66.97920877326256,
+        "weaknesses": [
+          "technical_details (平均分: 60.0)",
+          "问题Q01: 分布式优化的时间复杂度是多少？...",
+          "问题Q02: 为什么选择CuPy而不是其他方案？..."
+        ],
+        "suggestions": [
+          "建议加强技术细节的准确性",
+          "建议提高表达的清晰度和逻辑性",
+          "建议增强回答的自信度和说服力",
+          "深入理解量子优化算法的数学原理",
+          "准备更多实际应用场景的案例",
+          "熟悉各种性能指标的计算方法",
+          "练习在压力下的快速反应能力"
+        ]
+      },
+      {
+        "round": 2,
+        "score": 61.63768073335515,
+        "weaknesses": [
+          "technical_details (平均分: 63.1)",
+          "innovation_points (平均分: 59.7)",
+          "问题Q03: 如何保证响应延迟的性能要求？...",
+          "问题Q06: 技术难点是如何突破的？..."
+        ],
+        "suggestions": [
+          "建议加强技术细节的准确性",
+          "建议提高表达的清晰度和逻辑性",
+          "建议增强回答的自信度和说服力",
+          "深入理解量子优化算法的数学原理",
+          "准备更多实际应用场景的案例",
+          "熟悉各种性能指标的计算方法",
+          "练习在压力下的快速反应能力"
+        ]
+      },
+      {
+        "round": 3,
+        "score": 57.96395915461217,
+        "weaknesses": [
+          "technical_details (平均分: 54.3)",
+          "问题Q02: 联邦学习的时间复杂度是多少？...",
+          "问题Q03: 请详细解释量子启发优化的工作原理...",
+          "问题Q04: 为什么选择Dask而不是其他方案？..."
+        ],
+        "suggestions": [
+          "建议加强时间管理，控制回答时长",
+          "建议加强技术细节的准确性",
+          "建议提高表达的清晰度和逻辑性",
+          "建议增强回答的自信度和说服力",
+          "深入理解量子优化算法的数学原理",
+          "准备更多实际应用场景的案例",
+          "熟悉各种性能指标的计算方法",
+          "练习在压力下的快速反应能力"
+        ]
+      },
+      {
+        "round": 4,
+        "score": 64.50174460815039,
+        "weaknesses": [
+          "technical_details (平均分: 59.9)",
+          "innovation_points (平均分: 68.7)",
+          "practical_application (平均分: 67.3)",
+          "问题Q03: 如何保证准确率的性能要求？...",
+          "问题Q04: 联邦学习的时间复杂度是多少？...",
+          "问题Q06: 这项技术的创新点体现在哪里？..."
+        ],
+        "suggestions": [
+          "建议加强技术细节的准确性",
+          "建议提高表达的清晰度和逻辑性",
+          "建议增强回答的自信度和说服力",
+          "深入理解量子优化算法的数学原理",
+          "准备更多实际应用场景的案例",
+          "熟悉各种性能指标的计算方法",
+          "练习在压力下的快速反应能力"
+        ]
+      },
+      {
+        "round": 5,
+        "score": 65.1137993106367,
+        "weaknesses": [
+          "technical_details (平均分: 59.2)",
+          "innovation_points (平均分: 69.7)",
+          "问题Q01: 如何保证CPU使用率的性能要求？...",
+          "问题Q04: 联邦学习的时间复杂度是多少？...",
+          "问题Q08: 扩展性如何保证？..."
+        ],
+        "suggestions": [
+          "建议加强技术细节的准确性",
+          "建议提高表达的清晰度和逻辑性",
+          "建议增强回答的自信度和说服力",
+          "深入理解量子优化算法的数学原理",
+          "准备更多实际应用场景的案例",
+          "熟悉各种性能指标的计算方法",
+          "练习在压力下的快速反应能力"
+        ]
+      },
+      {
+        "round": 6,
+        "score": 72.09734216324539,
+        "weaknesses": [
+          "technical_details (平均分: 66.6)",
+          "innovation_points (平均分: 69.2)",
+          "问题Q01: 为什么选择Unity3D而不是其他方案？...",
+          "问题Q07: 与现有方法相比有什么优势？..."
+        ],
+        "suggestions": [
+          "建议加强技术细节的准确性",
+          "建议提高表达的清晰度和逻辑性",
+          "建议增强回答的自信度和说服力",
+          "深入理解量子优化算法的数学原理",
+          "准备更多实际应用场景的案例",
+          "熟悉各种性能指标的计算方法",
+          "练习在压力下的快速反应能力"
+        ]
+      },
+      {
+        "round": 7,
+        "score": 60.17529801178571,
+        "weaknesses": [
+          "technical_details (平均分: 59.4)",
+          "innovation_points (平均分: 59.6)",
+          "practical_application (平均分: 62.6)",
+          "问题Q01: 如何保证处理时间的性能要求？...",
+          "问题Q02: 为什么选择CuPy而不是其他方案？...",
+          "问题Q04: 实时决策引擎的时间复杂度是多少？...",
+          "问题Q05: 与现有方法相比有什么优势？...",
+          "问题Q06: 与现有方法相比有什么优势？...",
+          "问题Q08: 这个方案如何在实际生产中部署？..."
+        ],
+        "suggestions": [
+          "建议加强技术细节的准确性",
+          "建议提高表达的清晰度和逻辑性",
+          "建议增强回答的自信度和说服力",
+          "深入理解量子优化算法的数学原理",
+          "准备更多实际应用场景的案例",
+          "熟悉各种性能指标的计算方法",
+          "练习在压力下的快速反应能力"
+        ]
+      },
+      {
+        "round": 8,
+        "score": 66.86925078623254,
+        "weaknesses": [
+          "technical_details (平均分: 60.2)",
+          "practical_application (平均分: 67.9)",
+          "问题Q02: 为什么选择PyTorch而不是其他方案？...",
+          "问题Q03: 分布式优化的时间复杂度是多少？..."
+        ],
+        "suggestions": [
+          "建议加强技术细节的准确性",
+          "建议提高表达的清晰度和逻辑性",
+          "建议增强回答的自信度和说服力",
+          "深入理解量子优化算法的数学原理",
+          "准备更多实际应用场景的案例",
+          "熟悉各种性能指标的计算方法",
+          "练习在压力下的快速反应能力"
+        ]
+      },
+      {
+        "round": 9,
+        "score": 67.60542567242678,
+        "weaknesses": [
+          "technical_details (平均分: 66.0)",
+          "innovation_points (平均分: 64.6)",
+          "practical_application (平均分: 66.9)",
+          "问题Q01: 联邦学习的时间复杂度是多少？...",
+          "问题Q04: 为什么选择Unity3D而不是其他方案？...",
+          "问题Q07: 这项技术的创新点体现在哪里？...",
+          "问题Q10: 成本效益如何评估？..."
+        ],
+        "suggestions": [
+          "建议加强技术细节的准确性",
+          "建议提高表达的清晰度和逻辑性",
+          "建议增强回答的自信度和说服力",
+          "深入理解量子优化算法的数学原理",
+          "准备更多实际应用场景的案例",
+          "熟悉各种性能指标的计算方法",
+          "练习在压力下的快速反应能力"
+        ]
+      },
+      {
+        "round": 10,
+        "score": 60.55060983873629,
+        "weaknesses": [
+          "technical_details (平均分: 57.7)",
+          "practical_application (平均分: 52.3)",
+          "问题Q01: 如何保证内存使用的性能要求？...",
+          "问题Q02: 请详细解释联邦学习的工作原理...",
+          "问题Q08: 扩展性如何保证？...",
+          "问题Q09: 这个方案如何在实际生产中部署？...",
+          "问题Q10: 成本效益如何评估？..."
+        ],
+        "suggestions": [
+          "建议加强技术细节的准确性",
+          "建议提高表达的清晰度和逻辑性",
+          "建议增强回答的自信度和说服力",
+          "深入理解量子优化算法的数学原理",
+          "准备更多实际应用场景的案例",
+          "熟悉各种性能指标的计算方法",
+          "练习在压力下的快速反应能力"
+        ]
+      }
+    ],
+    "progress_scores": [
+      66.97920877326256,
+      61.63768073335515,
+      57.96395915461217,
+      64.50174460815039,
+      65.1137993106367,
+      72.09734216324539,
+      60.17529801178571,
+      66.86925078623254,
+      67.60542567242678,
+      60.55060983873629
+    ],
+    "weakness_heatmap": {
+      "technical_details (平均分: 60.0)": 1,
+      "问题Q01: 分布式优化的时间复杂度是多少？...": 1,
+      "问题Q02: 为什么选择CuPy而不是其他方案？...": 2,
+      "technical_details (平均分: 63.1)": 1,
+      "innovation_points (平均分: 59.7)": 1,
+      "问题Q03: 如何保证响应延迟的性能要求？...": 1,
+      "问题Q06: 技术难点是如何突破的？...": 1,
+      "technical_details (平均分: 54.3)": 1,
+      "问题Q02: 联邦学习的时间复杂度是多少？...": 1,
+      "问题Q03: 请详细解释量子启发优化的工作原理...": 1,
+      "问题Q04: 为什么选择Dask而不是其他方案？...": 1,
+      "technical_details (平均分: 59.9)": 1,
+      "innovation_points (平均分: 68.7)": 1,
+      "practical_application (平均分: 67.3)": 1,
+      "问题Q03: 如何保证准确率的性能要求？...": 1,
+      "问题Q04: 联邦学习的时间复杂度是多少？...": 2,
+      "问题Q06: 这项技术的创新点体现在哪里？...": 1,
+      "technical_details (平均分: 59.2)": 1,
+      "innovation_points (平均分: 69.7)": 1,
+      "问题Q01: 如何保证CPU使用率的性能要求？...": 1,
+      "问题Q08: 扩展性如何保证？...": 2,
+      "technical_details (平均分: 66.6)": 1,
+      "innovation_points (平均分: 69.2)": 1,
+      "问题Q01: 为什么选择Unity3D而不是其他方案？...": 1,
+      "问题Q07: 与现有方法相比有什么优势？...": 1,
+      "technical_details (平均分: 59.4)": 1,
+      "innovation_points (平均分: 59.6)": 1,
+      "practical_application (平均分: 62.6)": 1,
+      "问题Q01: 如何保证处理时间的性能要求？...": 1,
+      "问题Q04: 实时决策引擎的时间复杂度是多少？...": 1,
+      "问题Q05: 与现有方法相比有什么优势？...": 1,
+      "问题Q06: 与现有方法相比有什么优势？...": 1,
+      "问题Q08: 这个方案如何在实际生产中部署？...": 1,
+      "technical_details (平均分: 60.2)": 1,
+      "practical_application (平均分: 67.9)": 1,
+      "问题Q02: 为什么选择PyTorch而不是其他方案？...": 1,
+      "问题Q03: 分布式优化的时间复杂度是多少？...": 1,
+      "technical_details (平均分: 66.0)": 1,
+      "innovation_points (平均分: 64.6)": 1,
+      "practical_application (平均分: 66.9)": 1,
+      "问题Q01: 联邦学习的时间复杂度是多少？...": 1,
+      "问题Q04: 为什么选择Unity3D而不是其他方案？...": 1,
+      "问题Q07: 这项技术的创新点体现在哪里？...": 1,
+      "问题Q10: 成本效益如何评估？...": 2,
+      "technical_details (平均分: 57.7)": 1,
+      "practical_application (平均分: 52.3)": 1,
+      "问题Q01: 如何保证内存使用的性能要求？...": 1,
+      "问题Q02: 请详细解释联邦学习的工作原理...": 1,
+      "问题Q09: 这个方案如何在实际生产中部署？...": 1
+    },
+    "final_score": 65.00842876579854,
+    "improvement_rate": -9.597902173327101
+  },
+  "heatmap": {
+    "analysis": {
+      "问题Q02: 为什么选择CuPy而不是其他方案？...": {
+        "frequency": 0.2,
+        "count": 2,
+        "severity": "low",
+        "priority": 0.24
+      },
+      "问题Q04: 联邦学习的时间复杂度是多少？...": {
+        "frequency": 0.2,
+        "count": 2,
+        "severity": "low",
+        "priority": 0.24
+      },
+      "问题Q08: 扩展性如何保证？...": {
+        "frequency": 0.2,
+        "count": 2,
+        "severity": "low",
+        "priority": 0.24
+      },
+      "问题Q10: 成本效益如何评估？...": {
+        "frequency": 0.2,
+        "count": 2,
+        "severity": "low",
+        "priority": 0.24
+      },
+      "technical_details (平均分: 60.0)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q01: 分布式优化的时间复杂度是多少？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "technical_details (平均分: 63.1)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "innovation_points (平均分: 59.7)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q03: 如何保证响应延迟的性能要求？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q06: 技术难点是如何突破的？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "technical_details (平均分: 54.3)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q02: 联邦学习的时间复杂度是多少？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q03: 请详细解释量子启发优化的工作原理...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q04: 为什么选择Dask而不是其他方案？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "technical_details (平均分: 59.9)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "innovation_points (平均分: 68.7)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "practical_application (平均分: 67.3)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q03: 如何保证准确率的性能要求？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q06: 这项技术的创新点体现在哪里？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "technical_details (平均分: 59.2)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "innovation_points (平均分: 69.7)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q01: 如何保证CPU使用率的性能要求？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "technical_details (平均分: 66.6)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "innovation_points (平均分: 69.2)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q01: 为什么选择Unity3D而不是其他方案？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q07: 与现有方法相比有什么优势？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "technical_details (平均分: 59.4)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "innovation_points (平均分: 59.6)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "practical_application (平均分: 62.6)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q01: 如何保证处理时间的性能要求？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q04: 实时决策引擎的时间复杂度是多少？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q05: 与现有方法相比有什么优势？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q06: 与现有方法相比有什么优势？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q08: 这个方案如何在实际生产中部署？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "technical_details (平均分: 60.2)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "practical_application (平均分: 67.9)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q02: 为什么选择PyTorch而不是其他方案？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q03: 分布式优化的时间复杂度是多少？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "technical_details (平均分: 66.0)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "innovation_points (平均分: 64.6)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "practical_application (平均分: 66.9)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q01: 联邦学习的时间复杂度是多少？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q04: 为什么选择Unity3D而不是其他方案？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q07: 这项技术的创新点体现在哪里？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "technical_details (平均分: 57.7)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "practical_application (平均分: 52.3)": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q01: 如何保证内存使用的性能要求？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q02: 请详细解释联邦学习的工作原理...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      },
+      "问题Q09: 这个方案如何在实际生产中部署？...": {
+        "frequency": 0.1,
+        "count": 1,
+        "severity": "low",
+        "priority": 0.11000000000000001
+      }
+    },
+    "top_3_weaknesses": [
+      "问题Q02: 为什么选择CuPy而不是其他方案？...",
+      "问题Q04: 联邦学习的时间复杂度是多少？...",
+      "问题Q08: 扩展性如何保证？..."
+    ],
+    "improvement_needed": 0
+  },
+  "plan": {
+    "total_duration": 180,
+    "modules": [
+      {
+        "name": "技术细节强化",
+        "duration": 45,
+        "activities": [
+          "深入学习核心算法原理",
+          "准备技术问题答案库",
+          "练习技术术语表达"
+        ],
+        "start_time": 0,
+        "priority": "normal"
+      },
+      {
+        "name": "创新点阐述",
+        "duration": 40,
+        "activities": [
+          "梳理创新点逻辑关系",
+          "准备对比分析材料",
+          "练习亮点展示技巧"
+        ],
+        "start_time": 45,
+        "priority": "normal"
+      },
+      {
+        "name": "应用场景训练",
+        "duration": 50,
+        "activities": [
+          "收集实际应用案例",
+          "分析部署实施方案",
+          "准备成本效益说明"
+        ],
+        "start_time": 85,
+        "priority": "normal"
+      },
+      {
+        "name": "实验验证强化",
+        "duration": 35,
+        "activities": [
+          "复习统计分析方法",
+          "准备数据解释话术",
+          "练习结果可信度论证"
+        ],
+        "start_time": 135,
+        "priority": "normal"
+      }
+    ],
+    "schedule": [
+      {
+        "time": 60,
+        "activity": "休息10分钟",
+        "type": "break"
+      },
+      {
+        "time": 120,
+        "activity": "休息10分钟",
+        "type": "break"
+      }
+    ],
+    "priorities": [
+      "问题Q02: 为什么选择CuPy而不是其他方案？...",
+      "问题Q04: 联邦学习的时间复杂度是多少？...",
+      "问题Q08: 扩展性如何保证？..."
+    ]
+  },
+  "timestamp": "2025-07-27T16:04:39.372625"
+}
