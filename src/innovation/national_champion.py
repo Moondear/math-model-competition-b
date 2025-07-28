@@ -13,7 +13,7 @@ import torch.nn as nn
 
 # 尝试导入ortools，如果失败则使用备用方案
 try:
-    from ortools.sat.python import cp_model
+from ortools.sat.python import cp_model
     HAS_ORTOOLS = True
 except ImportError as e:
     logger.warning(f"OR-Tools导入失败: {e}，将使用备用优化方案")
@@ -68,32 +68,32 @@ class NationalAwardEnhancer:
         if HAS_ORTOOLS:
             # 使用OR-Tools实现
             try:
-                # 创建量子混合求解器
-                model = cp_model.CpModel()
-                solver = cp_model.CpSolver()
-                
-                # 量子位编码决策变量
-                qubits = []
-                for i in range(min(problem_size, 1000)):  # 限制测试规模
-                    qubits.append(model.NewBoolVar(f'qubit_{i}'))
-                    
-                # 应用量子启发式搜索
-                for constraint in constraints:
-                    self._apply_quantum_constraint(model, qubits, constraint)
-                    
-                # 设置求解器参数
-                solver.parameters.max_time_in_seconds = 60.0
-                solver.parameters.num_search_workers = 8
-                
-                # 求解并返回结果
-                status = solver.Solve(model)
-                
-                return {
-                    'status': solver.StatusName(status),
-                    'objective_value': solver.ObjectiveValue() if status == cp_model.OPTIMAL else 0,
-                    'solution': [bool(solver.Value(q)) for q in qubits] if status == cp_model.OPTIMAL else [False] * len(qubits),
+        # 创建量子混合求解器
+        model = cp_model.CpModel()
+        solver = cp_model.CpSolver()
+        
+        # 量子位编码决策变量
+        qubits = []
+        for i in range(min(problem_size, 1000)):  # 限制测试规模
+            qubits.append(model.NewBoolVar(f'qubit_{i}'))
+            
+        # 应用量子启发式搜索
+        for constraint in constraints:
+            self._apply_quantum_constraint(model, qubits, constraint)
+            
+        # 设置求解器参数
+        solver.parameters.max_time_in_seconds = 60.0
+        solver.parameters.num_search_workers = 8
+        
+        # 求解并返回结果
+        status = solver.Solve(model)
+        
+        return {
+            'status': solver.StatusName(status),
+            'objective_value': solver.ObjectiveValue() if status == cp_model.OPTIMAL else 0,
+            'solution': [bool(solver.Value(q)) for q in qubits] if status == cp_model.OPTIMAL else [False] * len(qubits),
                     'speedup': 0.302,  # 模拟30.2%提升
-                    'quantum_state': self._get_quantum_state()
+            'quantum_state': self._get_quantum_state()
                 }
             except Exception as e:
                 logger.warning(f"OR-Tools求解失败: {e}，使用备用方案")

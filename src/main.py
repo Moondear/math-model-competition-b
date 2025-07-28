@@ -1,16 +1,16 @@
 """
 主程序入口
 """
-from src.sampling import optimal_sampling, run_stress_test
-from src.production import ProductionParams, optimize_production
-from src.multistage import create_example_network, optimize_multistage
-from src.robust import (UncertaintyParams, robust_optimize_production,
+from .sampling import optimal_sampling, run_stress_test
+from .production import ProductionParams, optimize_production
+from .multistage import create_example_network, optimize_multistage
+from .robust import (UncertaintyParams, robust_optimize_production,
                        robust_optimize_multistage)
-from src.visualization import (create_sampling_dashboard, 
+from .visualization import (create_sampling_dashboard, 
                              create_production_dashboard,
                              create_multistage_dashboard,
                              create_robust_dashboard)
-from src.latex_generator import generate_paper, save_paper
+from .latex_generator import generate_paper, save_paper
 import logging
 
 logging.basicConfig(level=logging.INFO)

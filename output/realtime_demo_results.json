@@ -2,10 +2,10 @@
   "performance": {
     "processed_count": 61,
     "decision_count": 61,
-    "avg_latency_ms": 23.084749940966,
-    "throughput_per_second": 2.031052608169107,
+    "avg_latency_ms": 23.531487730682873,
+    "throughput_per_second": 2.0293015862191224,
     "error_rate": 0.0,
-    "total_runtime": 30.033687829971313
+    "total_runtime": 30.059602975845337
   },
   "edge_configs": {
     "raspberry_pi": {
@@ -27,6 +27,6 @@
       "power_consumption": "10W"
     }
   },
-  "overall_score": 97.40859204690837,
-  "high_priority_decisions": 13
+  "overall_score": 97.2538427105028,
+  "high_priority_decisions": 14
 }
