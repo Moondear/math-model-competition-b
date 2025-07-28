@@ -8,7 +8,7 @@ import sys
 import os
 sys.path.append('src')
 
-from defense.ai_defense_coach import DefenseCoach, DefenseTrainingSystem
+from src.defense_coach_enhanced import DefenseCoach, DefenseTrainingSystem, EnhancedDefenseCoach
 
 def test_enhanced_defense_system():
     """测试改良的AI答辩系统"""
@@ -28,47 +28,47 @@ def test_enhanced_defense_system():
     print("\n🎤 开始简化演示 (3个问题)...")
     
     # 生成几个问题进行演示
-    questions = coach.q_predictor.generate_questions(3)
-    
-    for i, question in enumerate(questions, 1):
-        print(f"\n【演示问题 {i}】")
+    print("\n📋 问题库演示:")
+    for i in range(3):
+        question = coach.question_bank.get_random_question()
+        print(f"\n【演示问题 {i+1}】")
         print(f"类别: {question.category}")
         print(f"难度: {'★' * question.difficulty}")
-        print(f"问题: {question.content}")
+        print(f"问题: {question.question}")
         print("-" * 40)
         
         # 显示参考答案
-        if hasattr(question, 'reference_answer') and question.reference_answer:
-            print(f"{question.reference_answer}")
+        if hasattr(question, 'standard_answer') and question.standard_answer:
+            print(f"参考答案: {question.standard_answer}")
         else:
             print("❌ 未生成参考答案")
     
-    print("\n🔥 故障应对演示:")
+    print("\n🔥 压力训练演示:")
     print("-" * 40)
     
-    # 演示故障应对
-    failure_types = ['投影仪故障', '网络中断', '电脑死机']
-    for failure_type in failure_types:
-        print(f"\n📱 {failure_type}场景:")
-        response = coach.q_predictor.answer_engine.generate_failure_response(
-            failure_type,
-            {'number': '5', 'key_data': '算法性能提升30%', 'estimated_time': '45'}
-        )
-        print(response)
+    # 演示压力训练
+    pressure_results = coach.start_pressure_training(3)
     
-    print("\n⚡ 快速问答演示:")
+    print(f"\n压力训练结果:")
+    avg_stress = sum(r['stress_score'] for r in pressure_results) / len(pressure_results)
+    print(f"平均压力应对得分: {avg_stress:.1f}/100")
+    
+    print("\n⚡ 标准训练演示:")
     print("-" * 40)
     
-    # 演示快速问答
-    blitz_questions = [
-        {"question": "这个算法的时间复杂度是多少？", "answer": "O(log n)，通过量子启发优化实现"},
-        {"question": "为什么不用现成的解决方案？", "answer": "现有方案无法处理千万级变量，我们创新算法突破瓶颈"},
-        {"question": "成本效益如何评估？", "answer": "相比传统方案降低25%成本，18个月回收投资"}
-    ]
+    # 演示标准训练
+    training_result = coach.start_standard_training(3)
     
-    for i, qa in enumerate(blitz_questions, 1):
-        print(f"\n⚡ 快速问答 {i}: {qa['question']}")
-        print(f"✅ 参考答案: {qa['answer']}")
+    print(f"\n标准训练结果:")
+    print(f"平均得分: {training_result['summary']['average_score']:.1f}/100")
+    print(f"总体评级: {training_result['overall_rating']}")
+    
+    # 演示弱点分析
+    weakness_analysis = coach.get_weakness_analysis()
+    if weakness_analysis['weak_categories']:
+        print(f"发现薄弱环节: {', '.join(weakness_analysis['weak_categories'])}")
+    else:
+        print("所有类别表现良好")
     
     print("\n🎊 改良成果总结:")
     print("="*60)

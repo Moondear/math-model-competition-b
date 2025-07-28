@@ -1,6 +1,11 @@
 """
 交互式决策看板
 """
+import sys
+import os
+# 修复模块导入路径
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import streamlit as st
 import plotly.express as px
 import plotly.graph_objects as go

@@ -1,7 +1,14 @@
 """
 生产决策优化模块
 """
-from ortools.linear_solver import pywraplp
+# 尝试导入ortools，失败时使用备用方案
+try:
+    from ortools.linear_solver import pywraplp
+    HAS_ORTOOLS = True
+except ImportError as e:
+    print(f"警告: OR-Tools导入失败: {e}，使用备用优化器")
+    pywraplp = None
+    HAS_ORTOOLS = False
 from dataclasses import dataclass
 import time
 import logging
@@ -43,21 +50,30 @@ class ProductionOptimizer:
         """
         self.params = params
         self.params.validate()
+        self.use_ortools = HAS_ORTOOLS
         
-        # 创建求解器（使用SCIP）
-        self.solver = pywraplp.Solver.CreateSolver('SCIP')
-        if not self.solver:
-            raise ValueError("无法创建求解器")
-            
-        # 设置多线程
-        try:
-            # 简化SCIP参数设置
-            self.solver.SetSolverSpecificParametersAsString("parallel/maxnthreads=8")
-        except Exception as e:
-            logger.warning(f"设置多线程失败: {str(e)}")
-        
-        # 创建决策变量
-        self._build_model()
+        if HAS_ORTOOLS:
+            try:
+                # 创建求解器（使用SCIP）
+                self.solver = pywraplp.Solver.CreateSolver('SCIP')
+                if not self.solver:
+                    logger.warning("无法创建SCIP求解器，使用备用方案")
+                    self.use_ortools = False
+                else:
+                    # 设置多线程
+                    try:
+                        # 简化SCIP参数设置
+                        self.solver.SetSolverSpecificParametersAsString("parallel/maxnthreads=8")
+                    except Exception as e:
+                        logger.warning(f"设置多线程失败: {str(e)}")
+                    
+                    # 创建决策变量
+                    self._build_model()
+            except Exception as e:
+                logger.warning(f"OR-Tools初始化失败: {e}，使用备用方案")
+                self.use_ortools = False
+        else:
+            logger.info("OR-Tools不可用，使用备用优化方案")
         
     def _build_model(self):
         """构建优化模型"""
@@ -161,6 +177,11 @@ class ProductionOptimizer:
         """
         logger.info("开始求解优化模型...")
         start_time = time.time()
+        
+        # 如果OR-Tools不可用，直接使用启发式方法
+        if not self.use_ortools:
+            logger.info("使用备用启发式优化算法")
+            return self._fallback_heuristic()
         
         try:
             # 设置超时

@@ -2,7 +2,14 @@
 多工序扩展模块
 """
 import networkx as nx
-from ortools.linear_solver import pywraplp
+# 尝试导入ortools，失败时使用备用方案
+try:
+    from ortools.linear_solver import pywraplp
+    HAS_ORTOOLS = True
+except ImportError as e:
+    print(f"警告: OR-Tools导入失败: {e}，使用备用优化器")
+    pywraplp = None
+    HAS_ORTOOLS = False
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 import time
