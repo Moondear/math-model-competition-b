@@ -7,29 +7,29 @@
   },
   "test_results": {
     "10million_variables": {
-      "total_time": 1.0770156383514404,
-      "memory_usage_mb": 0.5625,
+      "total_time": 1.0923349857330322,
+      "memory_usage_mb": 0.55859375,
       "success_count": 100,
       "error_count": 0,
-      "avg_response_ms": 10.76848030090332,
-      "throughput": 92.84916248111993
+      "avg_response_ms": 10.901000499725342,
+      "throughput": 91.54700829516423
     },
     "100_concurrent": {
-      "total_time": 0.09068942070007324,
-      "memory_usage_mb": 0.33203125,
+      "total_time": 0.08928823471069336,
+      "memory_usage_mb": 0.328125,
       "success_count": 100,
-      "avg_response_ms": 29.778602123260498,
-      "p95_response_ms": 47.74390459060668,
-      "p99_response_ms": 50.14627218246461,
-      "throughput": 1102.6644478270357,
+      "avg_response_ms": 27.662103176116943,
+      "p95_response_ms": 47.77177572250366,
+      "p99_response_ms": 48.68687629699708,
+      "throughput": 1119.9683846815237,
       "error_rate": 0.0
     },
     "raspberry_pi": {
-      "total_time": 30.038483381271362,
+      "total_time": 30.053699731826782,
       "memory_usage_mb": 0.03125,
       "success_count": 148,
-      "avg_response_ms": 102.47445267599981,
-      "throughput": 4.927013062592775,
+      "avg_response_ms": 102.54205723066588,
+      "throughput": 4.92451848925836,
       "error_rate": 0.0
     }
   }

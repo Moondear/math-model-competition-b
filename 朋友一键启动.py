@@ -9,6 +9,18 @@ import sys
 import os
 import time
 import webbrowser
+import threading
+from pathlib import Path
+
+# 添加新模块的导入
+try:
+    from src.sensitivity import run_sensitivity_analysis
+    from src.optimization import run_multi_objective_optimization
+    from src.robust import run_robust_optimization_analysis
+    NEW_MODULES_AVAILABLE = True
+except ImportError as e:
+    print(f"⚠️ 新模块导入失败: {e}")
+    NEW_MODULES_AVAILABLE = False
 
 def print_header():
     print("🎊" + "="*60 + "🎊")
@@ -133,15 +145,58 @@ def show_competition_analysis():
     print("🚀 使用建议：先运行 python src/main.py 获取基础结果")
     print()
 
-def main():
-    print_header()
+def run_new_analysis_modules():
+    """运行新的分析模块"""
+    print("\n" + "="*60)
+    print("🚀 启动国一优化模块...")
+    print("="*60)
     
-    # 检查依赖
-    if not check_dependencies():
-        print("❌ 环境检查失败，请联系技术支持")
-        input("按Enter键退出...")
-        return
+    results = {}
     
+    # 1. 敏感性分析可视化模块
+    print("\n🔍 运行敏感性分析可视化模块...")
+    try:
+        sensitivity_result = run_sensitivity_analysis()
+        results['sensitivity'] = sensitivity_result
+        print("✅ 敏感性分析完成")
+    except Exception as e:
+        print(f"❌ 敏感性分析失败: {e}")
+    
+    # 2. 多目标优化帕累托前沿证明
+    print("\n🎯 运行多目标优化帕累托前沿证明...")
+    try:
+        optimization_result = run_multi_objective_optimization()
+        results['optimization'] = optimization_result
+        print("✅ 多目标优化完成")
+    except Exception as e:
+        print(f"❌ 多目标优化失败: {e}")
+    
+    # 3. 不确定性集合的数学证明
+    print("\n🛡️ 运行不确定性集合的数学证明...")
+    try:
+        robust_result = run_robust_optimization_analysis()
+        results['robust'] = robust_result
+        print("✅ 鲁棒优化分析完成")
+    except Exception as e:
+        print(f"❌ 鲁棒优化分析失败: {e}")
+    
+    return results
+
+def start_all_systems():
+    """启动所有系统"""
+    print("🎉 欢迎使用数学建模竞赛系统！")
+    print("="*60)
+    
+    # 检查新模块是否可用
+    if NEW_MODULES_AVAILABLE:
+        print("✅ 检测到国一优化模块，将启动完整功能")
+        # 运行新的分析模块
+        new_results = run_new_analysis_modules()
+    else:
+        print("⚠️ 国一优化模块不可用，将启动基础功能")
+        new_results = {}
+    
+    # 原有的系统启动代码...
     print("\n🎯 开始完整系统演示...")
     print("⏱️ 预计总用时: 3-5分钟")
     print()
@@ -254,4 +309,4 @@ def main():
     input("按Enter键退出...")
 
 if __name__ == "__main__":
-    main() 
+    start_all_systems() 

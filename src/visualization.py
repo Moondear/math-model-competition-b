@@ -6,10 +6,7 @@ import matplotlib.pyplot as plt
 from scipy.stats import binom, beta
 import networkx as nx
 import os
-
-def ensure_output_dir():
-    """确保输出目录存在"""
-    os.makedirs('output', exist_ok=True)
+from .font_utils import setup_chinese_font, ensure_output_dir
 
 def plot_sampling_distribution(n: int, c: int, p0: float, p1: float) -> str:
     """绘制抽样分布图
@@ -24,8 +21,7 @@ def plot_sampling_distribution(n: int, c: int, p0: float, p1: float) -> str:
         str: 保存的文件路径
     """
     # 设置中文字体
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    plt.rcParams['axes.unicode_minus'] = False
+    setup_chinese_font()
     
     # 创建x轴数据点
     x = np.arange(0, n+1)
@@ -81,8 +77,7 @@ def plot_error_rates(p0: float, p1: float, n: int, c: int) -> str:
         str: 保存的文件路径
     """
     # 设置中文字体
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    plt.rcParams['axes.unicode_minus'] = False
+    setup_chinese_font()
     
     # 创建不良率范围
     p_range = np.linspace(0, 0.3, 1000)
@@ -151,8 +146,7 @@ def plot_production_decision(result: dict) -> str:
         str: 保存的文件路径
     """
     # 设置中文字体
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    plt.rcParams['axes.unicode_minus'] = False
+    setup_chinese_font()
     
     # 创建有向图
     G = nx.DiGraph()
@@ -247,8 +241,7 @@ def plot_cost_breakdown(result: dict, params: dict) -> str:
         str: 保存的文件路径
     """
     # 设置中文字体
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    plt.rcParams['axes.unicode_minus'] = False
+    setup_chinese_font()
     
     # 计算各项成本和收益
     test_cost1 = params.test_cost1 if result['test_part1'] else 0
@@ -329,8 +322,7 @@ def plot_production_network(graph: nx.DiGraph, result: dict) -> str:
         str: 保存的文件路径
     """
     # 设置中文字体
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    plt.rcParams['axes.unicode_minus'] = False
+    setup_chinese_font()
     
     # 创建图形
     plt.figure(figsize=(15, 10))
@@ -408,8 +400,7 @@ def plot_cost_distribution(result: dict, graph: nx.DiGraph) -> str:
         str: 保存的文件路径
     """
     # 设置中文字体
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    plt.rcParams['axes.unicode_minus'] = False
+    setup_chinese_font()
     
     # 收集数据
     nodes = list(result['decisions'].keys())
@@ -503,8 +494,7 @@ def plot_uncertainty_distribution(p_hat: float, n: int,
         str: 保存的文件路径
     """
     # 设置中文字体
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    plt.rcParams['axes.unicode_minus'] = False
+    setup_chinese_font()
     
     # 生成Beta分布参数
     k = int(p_hat * n)
@@ -563,8 +553,7 @@ def plot_profit_distribution(profits: np.ndarray) -> str:
         str: 保存的文件路径
     """
     # 设置中文字体
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    plt.rcParams['axes.unicode_minus'] = False
+    setup_chinese_font()
     
     # 创建图形
     plt.figure(figsize=(12, 6))
@@ -640,8 +629,7 @@ def plot_robust_network(graph: nx.DiGraph, result: dict) -> str:
         str: 保存的文件路径
     """
     # 设置中文字体
-    plt.rcParams['font.sans-serif'] = ['SimHei']
-    plt.rcParams['axes.unicode_minus'] = False
+    setup_chinese_font()
     
     # 创建图形
     plt.figure(figsize=(15, 10))

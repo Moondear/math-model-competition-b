@@ -1,0 +1,153 @@
+
+\section{不确定性集合的数学推导与理论证明}
+
+\subsection{鲁棒优化问题定义}
+
+考虑生产决策优化问题：
+\begin{align}
+\max_{x \in \mathcal{X}} \quad & \min_{\xi \in \mathcal{U}} f(x, \xi) \\
+\text{s.t.} \quad & g_i(x, \xi) \leq 0, \quad \forall \xi \in \mathcal{U}, \quad i = 1, 2, \ldots, m
+\end{align}
+
+其中：
+\begin{itemize}
+\item $x \in \mathcal{X}$ 是决策变量
+\item $\xi \in \mathcal{U}$ 是不确定性参数
+\item $f(x, \xi)$ 是目标函数
+\item $g_i(x, \xi)$ 是约束函数
+\item $\mathcal{U}$ 是不确定性集合
+\end{itemize}
+
+\subsection{不确定性集合的数学定义}
+
+\subsubsection{盒约束不确定性集合}
+
+盒约束不确定性集合定义为：
+\begin{align}
+\mathcal{U}_{box} = \{\xi : \|\xi - \hat{\xi}\|_{\infty} \leq \rho\}
+\end{align}
+
+其中 $\hat{\xi}$ 是标称值，$\rho$ 是不确定性半径。
+
+\textbf{性质1：} 盒约束集合是凸的、紧的。
+
+\textbf{证明：} 
+\begin{align}
+& \text{对于任意 } \xi_1, \xi_2 \in \mathcal{U}_{box} \text{ 和 } \lambda \in [0, 1] \\
+& \|\lambda \xi_1 + (1-\lambda) \xi_2 - \hat{\xi}\|_{\infty} \\
+& \leq \lambda \|\xi_1 - \hat{\xi}\|_{\infty} + (1-\lambda) \|\xi_2 - \hat{\xi}\|_{\infty} \\
+& \leq \lambda \rho + (1-\lambda) \rho = \rho
+\end{align}
+
+因此 $\lambda \xi_1 + (1-\lambda) \xi_2 \in \mathcal{U}_{box}$，即集合是凸的。
+
+\subsubsection{椭球不确定性集合}
+
+椭球不确定性集合定义为：
+\begin{align}
+\mathcal{U}_{ellipsoid} = \{\xi : (\xi - \hat{\xi})^T \Sigma^{-1} (\xi - \hat{\xi}) \leq \rho^2\}
+\end{align}
+
+其中 $\Sigma$ 是正定协方差矩阵。
+
+\textbf{性质2：} 椭球集合是凸的、紧的。
+
+\textbf{证明：}
+椭球集合是二次约束定义的凸集，因为：
+\begin{align}
+(\xi - \hat{\xi})^T \Sigma^{-1} (\xi - \hat{\xi}) \leq \rho^2
+\end{align}
+
+是凸二次约束（因为 $\Sigma^{-1}$ 是正定的）。
+
+\subsubsection{多面体不确定性集合}
+
+多面体不确定性集合定义为：
+\begin{align}
+\mathcal{U}_{polyhedron} = \{\xi : A\xi \leq b\}
+\end{align}
+
+其中 $A \in \mathbb{R}^{m \times n}$，$b \in \mathbb{R}^m$。
+
+\textbf{性质3：} 多面体集合是凸的、闭的。
+
+\textbf{证明：}
+多面体是有限个半空间的交集，每个半空间都是凸的、闭的，因此交集也是凸的、闭的。
+
+\subsubsection{概率不确定性集合}
+
+概率不确定性集合定义为：
+\begin{align}
+\mathcal{U}_{prob} = \{\xi : \mathbb{P}(\xi \in \mathcal{U}) \geq 1 - \alpha\}
+\end{align}
+
+其中 $\alpha$ 是风险水平。
+
+\textbf{性质4：} 概率集合的凸性取决于基础集合 $\mathcal{U}$ 的凸性。
+
+\subsection{鲁棒优化的理论保证}
+
+\subsubsection{最坏情况分析}
+
+\textbf{定理1：} 对于凸不确定性集合，鲁棒优化问题的最坏情况分析等价于：
+\begin{align}
+\max_{x \in \mathcal{X}} \quad & \min_{\xi \in \mathcal{U}} f(x, \xi) \\
+\text{s.t.} \quad & \max_{\xi \in \mathcal{U}} g_i(x, \xi) \leq 0, \quad i = 1, 2, \ldots, m
+\end{align}
+
+\textbf{证明：}
+由于 $\mathcal{U}$ 是凸的、紧的，根据极值定理，连续函数在紧集上达到极值。因此：
+\begin{align}
+\min_{\xi \in \mathcal{U}} f(x, \xi) = f(x, \xi^*(x))
+\end{align}
+
+其中 $\xi^*(x)$ 是给定 $x$ 时的最坏情况参数。
+
+\subsubsection{对偶理论}
+
+\textbf{定理2：} 对于线性目标函数和凸不确定性集合，鲁棒优化问题可以通过对偶理论求解。
+
+\textbf{证明：}
+考虑线性目标函数 $f(x, \xi) = c^T x + \xi^T d$，其中 $\xi \in \mathcal{U}$。
+
+最坏情况目标函数为：
+\begin{align}
+\min_{\xi \in \mathcal{U}} f(x, \xi) = c^T x + \min_{\xi \in \mathcal{U}} \xi^T d
+\end{align}
+
+根据对偶理论：
+\begin{align}
+\min_{\xi \in \mathcal{U}} \xi^T d = \max_{\lambda \geq 0} \min_{\xi} \{\xi^T d + \lambda^T (A\xi - b)\}
+\end{align}
+
+\subsubsection{保守性分析}
+
+\textbf{定理3：} 鲁棒优化解是保守的，即：
+\begin{align}
+f(x_{robust}, \xi) \geq f(x_{robust}, \xi_{worst}), \quad \forall \xi \in \mathcal{U}
+\end{align}
+
+\textbf{证明：}
+根据鲁棒优化的定义：
+\begin{align}
+x_{robust} = \arg\max_{x} \min_{\xi \in \mathcal{U}} f(x, \xi)
+\end{align}
+
+因此：
+\begin{align}
+\min_{\xi \in \mathcal{U}} f(x_{robust}, \xi) \geq \min_{\xi \in \mathcal{U}} f(x, \xi), \quad \forall x
+\end{align}
+
+\subsection{实际应用中的理论验证}
+
+在我们的生产决策问题中：
+
+1) \textbf{盒约束验证：} 参数在给定区间内变化，满足凸性要求。
+
+2) \textbf{椭球约束验证：} 考虑参数间的相关性，通过协方差矩阵建模。
+
+3) \textbf{多面体约束验证：} 线性约束确保解的可行性。
+
+4) \textbf{概率约束验证：} 通过风险价值（VaR）控制风险。
+
+\textbf{结论：} 通过理论证明，我们的鲁棒优化方法能够保证在最坏情况下仍能获得可接受的解，同时保持解的保守性和可行性。

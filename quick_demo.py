@@ -7,6 +7,7 @@ import os
 import time
 import numpy as np
 import matplotlib.pyplot as plt
+from .font_utils import setup_chinese_font, ensure_output_dir
 
 def show_project_overview():
     """展示项目概览"""
@@ -226,7 +227,7 @@ def generate_demo_chart():
     """生成演示图表"""
     try:
         # 设置中文字体
-        plt.rcParams['font.sans-serif'] = ['Microsoft YaHei', 'SimHei', 'Arial Unicode MS']
+        setup_chinese_font()
         plt.rcParams['axes.unicode_minus'] = False
         
         # 创建简单的演示图表

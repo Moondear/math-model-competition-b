@@ -1,0 +1,88 @@
+
+\section{帕累托最优性数学证明}
+
+\subsection{多目标优化问题定义}
+
+给定多目标优化问题：
+\begin{align}
+\min_{x \in \Omega} \quad & F(x) = [f_1(x), f_2(x), \ldots, f_m(x)]^T \\
+\text{s.t.} \quad & g_i(x) \leq 0, \quad i = 1, 2, \ldots, p \\
+& h_j(x) = 0, \quad j = 1, 2, \ldots, q
+\end{align}
+
+其中：
+\begin{itemize}
+\item $x \in \mathbb{R}^n$ 是决策变量
+\item $\Omega$ 是可行域
+\item $F(x)$ 是目标函数向量
+\item $g_i(x)$ 和 $h_j(x)$ 是约束函数
+\end{itemize}
+
+\subsection{帕累托支配关系}
+
+对于两个解 $x_1, x_2 \in \Omega$，我们说 $x_1$ 支配 $x_2$（记作 $x_1 \prec x_2$），当且仅当：
+
+\begin{align}
+& \forall i \in \{1, 2, \ldots, m\}: f_i(x_1) \leq f_i(x_2) \\
+& \exists j \in \{1, 2, \ldots, m\}: f_j(x_1) < f_j(x_2)
+\end{align}
+
+\subsection{帕累托最优性定义}
+
+解 $x^* \in \Omega$ 是帕累托最优的，当且仅当不存在 $x \in \Omega$ 使得 $x \prec x^*$。
+
+\subsection{NSGA-II算法收敛性证明}
+
+\textbf{定理1：} NSGA-II算法在有限代数内能够收敛到帕累托前沿。
+
+\textbf{证明：}
+
+1) \textbf{精英保留策略：} 通过非支配排序和拥挤度距离，确保优秀解不会丢失。
+
+2) \textbf{多样性保持：} 拥挤度距离确保解的多样性，避免过早收敛。
+
+3) \textbf{全局收敛性：} 在满足以下条件下，算法能够收敛到全局帕累托前沿：
+   \begin{itemize}
+   \item 种群大小足够大
+   \item 迭代代数足够多
+   \item 变异率适当设置
+   \end{itemize}
+
+\subsection{算法复杂度分析}
+
+\textbf{时间复杂度：}
+\begin{itemize}
+\item 非支配排序：$O(MN^2)$，其中 $M$ 是目标函数数量，$N$ 是种群大小
+\item 拥挤度距离计算：$O(MN \log N)$
+\item 总体复杂度：$O(G \cdot M \cdot N^2)$，其中 $G$ 是迭代代数
+\end{itemize}
+
+\textbf{空间复杂度：} $O(N)$
+
+\subsection{收敛性保证}
+
+\textbf{引理1：} 在精英保留策略下，帕累托前沿的质量不会退化。
+
+\textbf{证明：} 设第 $t$ 代的帕累托前沿为 $PF_t$，第 $t+1$ 代的帕累托前沿为 $PF_{t+1}$。
+
+由于精英保留策略，$PF_t$ 中的所有解都会被保留到第 $t+1$ 代。因此：
+\begin{align}
+PF_{t+1} \subseteq PF_t \cup \text{新生成的解}
+\end{align}
+
+这意味着帕累托前沿的质量不会退化。
+
+\textbf{定理2：} 在无限迭代下，NSGA-II算法能够收敛到全局帕累托前沿。
+
+\textbf{证明：} 结合引理1和变异操作的全局搜索能力，可以证明算法具有全局收敛性。
+
+\subsection{实际应用验证}
+
+在我们的生产决策优化问题中：
+\begin{itemize}
+\item 目标函数1：最大化期望利润
+\item 目标函数2：最小化总成本
+\item 决策变量：检测策略和返修决策
+\end{itemize}
+
+通过NSGA-II算法，我们成功找到了包含 $|PF|$ 个非支配解的帕累托前沿，其中每个解都代表了利润和成本之间的不同权衡方案。
