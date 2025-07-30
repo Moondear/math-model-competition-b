@@ -42,6 +42,85 @@ class ProductionParams:
 class ProductionOptimizer:
     """生产决策优化器"""
     
+    # 表1六种情况的完整参数配置
+    CASE_PARAMS = {
+        1: {
+            'defect_rate1': 0.10, 'defect_rate2': 0.10,
+            'test_cost1': 2, 'test_cost2': 3,
+            'assembly_cost': 6, 'test_cost_final': 3,
+            'repair_cost': 5, 'market_price': 56, 'return_loss': 6
+        },
+        2: {
+            'defect_rate1': 0.20, 'defect_rate2': 0.20,
+            'test_cost1': 2, 'test_cost2': 3,
+            'assembly_cost': 6, 'test_cost_final': 3,
+            'repair_cost': 5, 'market_price': 56, 'return_loss': 6
+        },
+        3: {
+            'defect_rate1': 0.10, 'defect_rate2': 0.10,
+            'test_cost1': 2, 'test_cost2': 3,
+            'assembly_cost': 6, 'test_cost_final': 3,
+            'repair_cost': 5, 'market_price': 56, 'return_loss': 30
+        },
+        4: {
+            'defect_rate1': 0.20, 'defect_rate2': 0.20,
+            'test_cost1': 1, 'test_cost2': 1,
+            'assembly_cost': 6, 'test_cost_final': 2,
+            'repair_cost': 5, 'market_price': 56, 'return_loss': 30
+        },
+        5: {
+            'defect_rate1': 0.10, 'defect_rate2': 0.10,
+            'test_cost1': 8, 'test_cost2': 1,
+            'assembly_cost': 6, 'test_cost_final': 2,
+            'repair_cost': 5, 'market_price': 56, 'return_loss': 10
+        },
+        6: {
+            'defect_rate1': 0.05, 'defect_rate2': 0.05,
+            'test_cost1': 4, 'test_cost2': 3,
+            'assembly_cost': 6, 'test_cost_final': 3,
+            'repair_cost': 5, 'market_price': 56, 'return_loss': 10
+        }
+    }
+    
+    @classmethod
+    def load_case_params(cls, case_id: int) -> ProductionParams:
+        """加载表1指定情况的参数
+        
+        Args:
+            case_id: 情况编号 (1-6)
+            
+        Returns:
+            ProductionParams: 对应情况的参数
+            
+        Raises:
+            ValueError: 当case_id不在1-6范围内时
+        """
+        if case_id not in cls.CASE_PARAMS:
+            raise ValueError(f"情况编号必须在1-6范围内，得到: {case_id}")
+        
+        params_dict = cls.CASE_PARAMS[case_id]
+        return ProductionParams(**params_dict)
+    
+    @classmethod
+    def analyze_all_cases(cls) -> dict:
+        """分析表1所有六种情况
+        
+        Returns:
+            dict: 所有情况的优化结果
+        """
+        results = {}
+        for case_id in range(1, 7):
+            logger.info(f"正在分析情况{case_id}...")
+            try:
+                params = cls.load_case_params(case_id)
+                optimizer = cls(params)
+                results[case_id] = optimizer.solve()
+                results[case_id]['case_params'] = cls.CASE_PARAMS[case_id]
+            except Exception as e:
+                logger.error(f"情况{case_id}分析失败: {e}")
+                results[case_id] = {'error': str(e)}
+        return results
+    
     def __init__(self, params: ProductionParams):
         """初始化优化器
         

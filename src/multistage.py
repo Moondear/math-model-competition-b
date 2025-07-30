@@ -36,6 +36,110 @@ class NodeParams:
 class MultiStageOptimizer:
     """多工序优化器"""
     
+    # 表2配置：8个零件、3个半成品、1个成品的完整参数
+    TABLE2_CONFIG = {
+        'components': {
+            'C1': {'defect_rate': 0.10, 'purchase_cost': 2, 'test_cost': 1},
+            'C2': {'defect_rate': 0.10, 'purchase_cost': 8, 'test_cost': 1},
+            'C3': {'defect_rate': 0.10, 'purchase_cost': 12, 'test_cost': 2},
+            'C4': {'defect_rate': 0.10, 'purchase_cost': 2, 'test_cost': 1},
+            'C5': {'defect_rate': 0.10, 'purchase_cost': 8, 'test_cost': 1},
+            'C6': {'defect_rate': 0.10, 'purchase_cost': 12, 'test_cost': 2},
+            'C7': {'defect_rate': 0.10, 'purchase_cost': 8, 'test_cost': 1},
+            'C8': {'defect_rate': 0.10, 'purchase_cost': 12, 'test_cost': 2}
+        },
+        'semi_products': {
+            'SP1': {'defect_rate': 0.10, 'assembly_cost': 8, 'test_cost': 4, 'disassembly_cost': 6},
+            'SP2': {'defect_rate': 0.10, 'assembly_cost': 8, 'test_cost': 4, 'disassembly_cost': 6},
+            'SP3': {'defect_rate': 0.10, 'assembly_cost': 8, 'test_cost': 4, 'disassembly_cost': 6}
+        },
+        'final_product': {
+            'FP': {'defect_rate': 0.10, 'assembly_cost': 8, 'test_cost': 6, 
+                   'disassembly_cost': 10, 'market_price': 200, 'exchange_loss': 40}
+        },
+        'assembly_structure': {
+            # 定义装配关系：哪些零件组装成哪个半成品/成品
+            'SP1': ['C1', 'C2', 'C3'],  # 半成品1由零件1,2,3组装
+            'SP2': ['C4', 'C5'],        # 半成品2由零件4,5组装  
+            'SP3': ['C6', 'C7', 'C8'],  # 半成品3由零件6,7,8组装
+            'FP': ['SP1', 'SP2', 'SP3'] # 成品由三个半成品组装
+        }
+    }
+    
+    @classmethod
+    def load_table2_config(cls) -> nx.DiGraph:
+        """加载表2配置构建生产网络
+        
+        Returns:
+            nx.DiGraph: 根据表2配置构建的生产网络
+        """
+        logger.info("加载表2配置构建生产网络...")
+        G = nx.DiGraph()
+        
+        # 添加零件节点
+        for comp_id, comp_data in cls.TABLE2_CONFIG['components'].items():
+            params = NodeParams(
+                defect_rate=comp_data['defect_rate'],
+                process_cost=comp_data['purchase_cost'],
+                test_cost=comp_data['test_cost'],
+                repair_cost=0  # 零件不需要返修，直接更换
+            )
+            G.add_node(comp_id, params=params, node_type='component')
+        
+        # 添加半成品节点
+        for sp_id, sp_data in cls.TABLE2_CONFIG['semi_products'].items():
+            params = NodeParams(
+                defect_rate=sp_data['defect_rate'],
+                process_cost=sp_data['assembly_cost'],
+                test_cost=sp_data['test_cost'],
+                repair_cost=sp_data['disassembly_cost']
+            )
+            G.add_node(sp_id, params=params, node_type='semi_product')
+        
+        # 添加成品节点
+        for fp_id, fp_data in cls.TABLE2_CONFIG['final_product'].items():
+            params = NodeParams(
+                defect_rate=fp_data['defect_rate'],
+                process_cost=fp_data['assembly_cost'],
+                test_cost=fp_data['test_cost'],
+                repair_cost=fp_data['disassembly_cost']
+            )
+            # 添加市场价格和调换损失属性
+            G.add_node(fp_id, params=params, node_type='final_product',
+                      market_price=fp_data['market_price'],
+                      exchange_loss=fp_data['exchange_loss'])
+        
+        # 添加装配关系边
+        for product_id, input_ids in cls.TABLE2_CONFIG['assembly_structure'].items():
+            for input_id in input_ids:
+                G.add_edge(input_id, product_id)
+        
+        logger.info(f"生产网络构建完成: {G.number_of_nodes()}个节点, {G.number_of_edges()}条边")
+        return G
+    
+    @classmethod
+    def create_custom_network(cls, custom_config: Dict) -> nx.DiGraph:
+        """根据自定义配置创建生产网络
+        
+        Args:
+            custom_config: 自定义配置字典，格式与TABLE2_CONFIG相同
+            
+        Returns:
+            nx.DiGraph: 自定义生产网络
+        """
+        logger.info("根据自定义配置创建生产网络...")
+        
+        # 临时替换配置
+        original_config = cls.TABLE2_CONFIG
+        cls.TABLE2_CONFIG = custom_config
+        
+        try:
+            network = cls.load_table2_config()
+            return network
+        finally:
+            # 恢复原配置
+            cls.TABLE2_CONFIG = original_config
+    
     def __init__(self, graph: nx.DiGraph):
         """初始化优化器
         

@@ -17,6 +17,7 @@ try:
     from src.sensitivity import run_sensitivity_analysis
     from src.optimization import run_multi_objective_optimization
     from src.robust import run_robust_optimization_analysis
+    from src.competition_b_solver import CompetitionBSolver
     NEW_MODULES_AVAILABLE = True
 except ImportError as e:
     print(f"⚠️ 新模块导入失败: {e}")
@@ -135,14 +136,26 @@ def show_competition_analysis():
     print("🏅 预期奖项：国家一等奖 (91-100分)")
     print()
     print("✅ 算法覆盖分析：")
-    print("   问题1 抽样检测决策 → 抽样检验优化算法 (src/sampling.py)")
-    print("   问题2 生产策略决策 → 生产决策优化算法 (src/production.py)")  
-    print("   问题3 多工序网络优化 → 多工序网络优化算法 (src/multistage.py)")
-    print("   问题4 不确定性分析 → 鲁棒优化算法 (src/robust.py)")
+    print("   问题1 抽样检测决策 → 抽样检验优化算法 (src/competition_b_solver.py)")
+    print("   问题2 生产策略决策 → 生产决策优化算法 (src/competition_b_solver.py)")  
+    print("   问题3 多工序网络优化 → 多工序网络优化算法 (src/competition_b_solver.py)")
+    print("   问题4 不确定性分析 → 鲁棒优化算法 (src/competition_b_solver.py)")
     print()
-    print("🔍 详细分析报告：数学建模竞赛题目分析报告.md")
+    print("🔍 详细算法说明：")
+    print("   📐 问题1算法：二项分布抽样检验 + OC曲线分析")
+    print("   📐 问题2算法：0-1整数规划 + 期望利润最大化")
+    print("   📐 问题3算法：网络流优化 + 多目标规划")
+    print("   📐 问题4算法：鲁棒优化 + 不确定性集合")
+    print()
+    print("📈 可视化图表地址：")
+    print("   📊 抽样检验分析: output/problem1_sampling_analysis.png")
+    print("   📊 生产决策树: output/problem2_case1-6_decision_tree.png")
+    print("   📊 多工序网络: output/problem3_multistage_network.png")
+    print("   📊 不确定性分析: output/problem4_uncertainty_analysis.png")
+    print()
+    print("📄 综合报告：output/competition_b_comprehensive_report.txt")
     print("💡 核心竞争力：4大算法+8项创新技术+3大Web系统")
-    print("🚀 使用建议：先运行 python src/main.py 获取基础结果")
+    print("🚀 使用建议：运行 python 朋友一键启动.py 获取完整结果")
     print()
 
 def run_new_analysis_modules():
@@ -153,7 +166,22 @@ def run_new_analysis_modules():
     
     results = {}
     
-    # 1. 敏感性分析可视化模块
+    # 1. 2024年数学建模竞赛B题求解器
+    print("\n🏆 运行2024年数学建模竞赛B题求解器...")
+    try:
+        solver = CompetitionBSolver()
+        competition_results = solver.solve_all_problems()
+        results['competition_b'] = competition_results
+        print("✅ 竞赛B题求解完成")
+        print(f"📊 生成报告: output/competition_b_comprehensive_report.txt")
+        print(f"📈 可视化图表: output/problem1_sampling_analysis.png")
+        print(f"📈 可视化图表: output/problem2_case1-6_decision_tree.png")
+        print(f"📈 可视化图表: output/problem3_multistage_network.png")
+        print(f"📈 可视化图表: output/problem4_uncertainty_analysis.png")
+    except Exception as e:
+        print(f"❌ 竞赛B题求解失败: {e}")
+    
+    # 2. 敏感性分析可视化模块
     print("\n🔍 运行敏感性分析可视化模块...")
     try:
         sensitivity_result = run_sensitivity_analysis()
@@ -162,7 +190,7 @@ def run_new_analysis_modules():
     except Exception as e:
         print(f"❌ 敏感性分析失败: {e}")
     
-    # 2. 多目标优化帕累托前沿证明
+    # 3. 多目标优化帕累托前沿证明
     print("\n🎯 运行多目标优化帕累托前沿证明...")
     try:
         optimization_result = run_multi_objective_optimization()
@@ -171,7 +199,7 @@ def run_new_analysis_modules():
     except Exception as e:
         print(f"❌ 多目标优化失败: {e}")
     
-    # 3. 不确定性集合的数学证明
+    # 4. 不确定性集合的数学证明
     print("\n🛡️ 运行不确定性集合的数学证明...")
     try:
         robust_result = run_robust_optimization_analysis()
@@ -297,6 +325,13 @@ def start_all_systems():
     print("   4. 通过智能仪表盘监控系统状态")
     print("   5. 在沉浸式展示中体验VR/AR技术")
     print("   6. 根据实时数据优化决策策略")
+    print()
+    
+    print("📚 算法详细说明:")
+    print("   📄 完整算法文档: 算法详细说明.md")
+    print("   📊 竞赛B题求解: src/competition_b_solver.py")
+    print("   📈 可视化图表: output/文件夹")
+    print("   📋 综合报告: output/competition_b_comprehensive_report.txt")
     print()
     
     print("🎉 恭喜！您已完全掌握这个国际领先水平的数学建模项目！")
