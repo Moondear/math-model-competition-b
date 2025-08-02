@@ -739,8 +739,8 @@ class CompetitionBSolver:
 
     def _create_network_plot(self, G: nx.DiGraph, decisions: Dict, cost_analysis: Dict = None):
         """创建专业网络可视化"""
-        fig = plt.figure(figsize=(20, 15))
-        gs = fig.add_gridspec(2, 2, hspace=0.3, wspace=0.2, height_ratios=[3, 1])
+        fig = plt.figure(figsize=(22, 18))
+        gs = fig.add_gridspec(2, 2, hspace=0.7, wspace=0.8, height_ratios=[3, 1])
         
         # 主网络图
         ax_main = fig.add_subplot(gs[0, :])
@@ -836,9 +836,32 @@ class CompetitionBSolver:
         colors = ['#32CD32', '#FF4500']
         explode = (0.1, 0)
         
-        wedges, texts, autotexts = ax_stats.pie(sizes, explode=explode, labels=labels, colors=colors,
-                                               autopct='%1.1f%%', shadow=True, startangle=90)
-        ax_stats.set_title('检测决策分布', fontsize=14, fontweight='bold')
+        # 创建饼图，完全不显示任何标签，无阴影效果
+        wedges, texts = ax_stats.pie(sizes, explode=explode, labels=None, colors=colors,
+                                     autopct=None, shadow=False, startangle=90)
+        
+        # 专业的极简标签设计 - 完全避免与饼图重叠
+        # 将标签放在左侧更远的位置，使用垂直布局
+        test_pct = test_count/(test_count+no_test_count)*100
+        no_test_pct = no_test_count/(test_count+no_test_count)*100
+        
+        # 检测标签组 - 左上方
+        ax_stats.text(-2.8, 0.6, '✅ 检测决策', fontsize=12, fontweight='bold', ha='left', va='center',
+                     bbox=dict(boxstyle='round,pad=0.4', facecolor='#32CD32', alpha=0.95, edgecolor='darkgreen'))
+        ax_stats.text(-2.8, 0.35, f'比例: {test_pct:.1f}%', fontsize=11, ha='left', va='center')
+        ax_stats.text(-2.8, 0.15, f'数量: {test_count}个', fontsize=10, ha='left', va='center', color='gray')
+        
+        # 不检测标签组 - 左下方  
+        ax_stats.text(-2.8, -0.15, '❌ 不检测决策', fontsize=12, fontweight='bold', ha='left', va='center',
+                     bbox=dict(boxstyle='round,pad=0.4', facecolor='#FF4500', alpha=0.95, edgecolor='darkred'))
+        ax_stats.text(-2.8, -0.4, f'比例: {no_test_pct:.1f}%', fontsize=11, ha='left', va='center')
+        ax_stats.text(-2.8, -0.6, f'数量: {no_test_count}个', fontsize=10, ha='left', va='center', color='gray')
+        
+        # 扩大显示区域，确保左侧标签完全可见
+        ax_stats.set_xlim(-3.5, 1.5)
+        ax_stats.set_ylim(-1, 1)
+        
+        ax_stats.set_title('检测决策分布', fontsize=14, fontweight='bold', pad=15)
         
         # 成本效益分析表
         ax_table = fig.add_subplot(gs[1, 1])
@@ -873,7 +896,7 @@ class CompetitionBSolver:
             table[(0, i)].set_facecolor('#4CAF50')
             table[(0, i)].set_text_props(weight='bold', color='white')
         
-        ax_table.set_title('优化结果汇总', fontsize=14, fontweight='bold')
+        ax_table.set_title('优化结果汇总', fontsize=14, fontweight='bold', pad=15)
         
         plt.suptitle('多工序生产网络专业分析报告', fontsize=20, fontweight='bold', y=0.95)
         plt.tight_layout()
